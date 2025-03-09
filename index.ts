@@ -74,7 +74,6 @@ const docHTML = `<!DOCTYPE html>
       </ul>
     </li>
   </ul>
-  <p><em>Deno KV + Oak Framework misol.</em></p>
 </body>
 </html>`;
 
