@@ -1,7 +1,7 @@
 import { Application, Router } from "https://deno.land/x/oak@v12.5.0/mod.ts";
 import * as bcrypt from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 import { v4 } from "https://deno.land/std@0.181.0/uuid/mod.ts";
-
+import { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
 /**
  * Deno KV bilan ishlash uchun instansiya.
  */
@@ -358,6 +358,15 @@ router
 
 const app = new Application();
 const PORT = 8080;
+
+// CORS ni barcha so‘rovlar uchun yoqamiz:
+app.use(
+  oakCors({
+    origin: "*", // Barcha domenlardan ruxsat berish
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Ruxsat etilgan HTTP metodlar
+    // other options if needed
+  }),
+);
 
 app.use(router.routes());
 app.use(router.allowedMethods());
